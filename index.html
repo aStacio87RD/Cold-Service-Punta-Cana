@@ -1,169 +1,213 @@
 <!DOCTYPE html>
-<html lang="auto">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cold Services | Aire Acondicionado, Electricidad, Plomería & Más</title>
+<title>Cold Services – Aire Acondicionado, Electricidad, Plomería</title>
 
-<!-- SEO optimizado Bavaro, Punta Cana, Friusa -->
-<meta name="description" content="Cold Services ofrece instalación, reparación y mantenimiento de aires acondicionados, electricidad, plomería, pintura y refrigeración en Bávaro, Punta Cana, Verón, Friusa y zonas cercanas. WhatsApp 8093937692.">
-<meta name="keywords" content="aire acondicionado bavaro, instalación de aires punta cana, reparación aire acondicionado friusa, electricista bavaro, plomero punta cana, técnicos en refrigeración, mantenimiento de oficinas, servicios para villas punta cana">
-<meta name="author" content="Cold Services" />
+<!-- SEO -->
+<meta name="description" content="Cold Services en Punta Cana, Bávaro y Friusa: aire acondicionado, electricidad, plomería, refrigeración y pintura. Instalación, mantenimiento y reparaciones 24/7.">
+<meta name="keywords" content="aire acondicionado punta cana, mantenimiento AC bávaro, electricista friusa, plomería punta cana, refrigeración comercial, técnicos certificados">
+<meta name="author" content="Cold Services">
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f6f9fc;
-        color: #222;
-    }
+  body { margin:0; font-family:Arial; background:#f6faff; color:#1d2d44; }
 
-    /* HEADER 3D ICE EFFECT */
-    header {
-        background: url('https://images.unsplash.com/photo-1600673925400-56f3792a1229?auto=format&fit=crop&w=1500&q=80');
-        background-size: cover;
-        background-position: center;
-        padding: 80px 20px;
-        text-align: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-    }
+  /* Header */
+  header {
+    position:relative;
+    background:#0a6efd;
+    padding:60px 20px;
+    text-align:center;
+    overflow:hidden;
+  }
 
-    /* Snow Effect */
-    header::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-image: url('https://i.gifer.com/Y0bj.gif');
-        background-size: cover;
-        opacity: 0.4;
-        pointer-events: none;
-    }
+  header h1 {
+    font-size:50px;
+    font-weight:900;
+    color:white;
+    text-transform:uppercase;
+    text-shadow:0 0 15px #c8f3ff, 0 0 25px #ffffff;
+    letter-spacing:2px;
+  }
 
-    h1 {
-        font-size: 3.5rem;
-        font-weight: 900;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: #e8f7ff;
-        text-shadow: 
-            0px 0px 10px #00c8ff,
-            0px 0px 20px #00a6d6,
-            0px 0px 30px #008bb5;
-    }
+  header p { color:#e9f8ff; font-size:18px; margin-top:10px; }
 
-    /* Services Grid */
-    .services {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 20px;
-        padding: 40px 20px;
-        max-width: 1200px;
-        margin: auto;
-    }
+  /* Snow */
+  .snow {
+    position:absolute; top:0; left:0;
+    width:100%; height:100%; pointer-events:none;
+    background-image:url('https://i.imgur.com/8yKXqFQ.png');
+    animation:snow 12s linear infinite;
+    opacity:.45;
+  }
 
-    .service-card {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
+  @keyframes snow {
+    from { background-position:0 0; }
+    to { background-position:0 1000px; }
+  }
 
-    .service-card img {
-        width: 100%;
-        border-radius: 10px;
-        height: 160px;
-        object-fit: cover;
-    }
+  /* Services */
+  .container { width:95%; max-width:1200px; margin:auto; padding:40px 0; }
+  .section-title { text-align:center; font-size:30px; font-weight:700; color:#0a6efd; margin-bottom:35px; }
 
-    .service-card button {
-        margin-top: 15px;
-        padding: 12px 18px;
-        background: #00aa55;
-        color: white;
-        font-size: 1rem;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        width: 100%;
-    }
+  .grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+  }
 
-    .service-card button:hover {
-        background: #008744;
-    }
+  .card {
+    background:white; padding:20px; border-radius:12px; text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:.3s;
+  }
+  .card:hover { transform:translateY(-6px); }
 
-    /* Floating WhatsApp Button */
-    .whatsapp-float {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 999;
-    }
+  .card img { width:100%; height:170px; object-fit:cover; border-radius:10px; margin-bottom:15px; }
 
-    .whatsapp-float img {
-        width: 70px;
-        height: 70px;
-    }
+  .btn-whats, .btn-call, .btn-service {
+    display:block; padding:12px; border-radius:8px; margin-top:10px;
+    text-decoration:none; color:white; background:#0a6efd; font-weight:bold; text-align:center;
+  }
+  .btn-whats:hover, .btn-service:hover { background:#084298; }
+
+  /* Floating WhatsApp */
+  #floatingWhatsapp {
+    position:fixed; bottom:20px; right:20px;
+    width:65px; height:65px; border-radius:50%;
+    background:white; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    display:flex; justify-content:center; align-items:center;
+    z-index:999;
+  }
+  #floatingWhatsapp img { width:45px; }
+
+  /* Popup */
+  #promoOverlay {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,.6); justify-content:center; align-items:center; z-index:9999;
+  }
+  #promoBox {
+    background:white; width:90%; max-width:380px; padding:25px; border-radius:12px;
+    text-align:center; position:relative;
+  }
+  #promoClose {
+    position:absolute; top:10px; right:10px; cursor:pointer; font-size:20px; font-weight:bold;
+  }
 
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>COLD SERVICES</h1>
+  <div class="snow"></div>
+  <h1>COLD SERVICES</h1>
+  <p id="heroLead"></p>
 </header>
 
-<section class="services">
+<section class="container">
+  <h2 class="section-title" id="servicesTitle"></h2>
 
-    <!-- Aire Acondicionado -->
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1597004891381-48e0e3d0b511?auto=format&fit=crop&w=900&q=80" alt="Air Conditioning">
-        <h3>Aire Acondicionado</h3>
-        <p>Instalación, reparación y mantenimiento.</p>
-        <button onclick="window.open('https://wa.me/18093937692?text=Hola!%20Quiero%20una%20cotización%20para%20servicio%20de%20aire%20acondicionado.', '_blank')">Solicitar por WhatsApp</button>
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3964706/pexels-photo-3964706.jpeg" alt="">
+      <h3 id="acTitle"></h3>
+      <a class="btn-service" href="https://wa.me/18093937692?text=Necesito servicio de Aire Acondicionado" target="_blank">WhatsApp</a>
     </div>
 
-    <!-- Electricidad -->
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1581092334563-1e7e63f48f85?auto=format&fit=crop&w=900&q=80" alt="Electricidad">
-        <h3>Electricidad</h3>
-        <p>Electricistas certificados para todo tipo de trabajos.</p>
-        <button onclick="window.open('https://wa.me/18093937692?text=Hola!%20Necesito%20un%20electricista.%20Por%20favor%20más%20información.', '_blank')">Solicitar Electricista</button>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/4386326/pexels-photo-4386326.jpeg" alt="">
+      <h3 id="elecTitle"></h3>
+      <a class="btn-service" href="https://wa.me/18093937692?text=Necesito un Electricista" target="_blank">WhatsApp</a>
     </div>
 
-    <!-- Plomería -->
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1597004890811-f67a6c3c6f6b?auto=format&fit=crop&w=900&q=80" alt="Plomería">
-        <h3>Plomería</h3>
-        <p>Soluciones rápidas para fugas, tuberías y más.</p>
-        <button onclick="window.open('https://wa.me/18093937692?text=Hola!%20Necesito%20un%20plomero.%20Puedes%20ayudarme?', '_blank')">Solicitar Plomero</button>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/5854193/pexels-photo-5854193.jpeg" alt="">
+      <h3 id="plomTitle"></h3>
+      <a class="btn-service" href="https://wa.me/18093937692?text=Necesito servicio de Plomería" target="_blank">WhatsApp</a>
     </div>
 
-    <!-- Refrigeración -->
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1556228578-6c9d34589f53?auto=format&fit=crop&w=900&q=80" alt="Refrigeración Comercial">
-        <h3>Refrigeración</h3>
-        <p>Cuartos fríos, equipos comerciales y más.</p>
-        <button onclick="window.open('https://wa.me/18093937692?text=Hola!%20Necesito%20servicio%20de%20refrigeración.', '_blank')">Servicio de Refrigeración</button>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/3735481/pexels-photo-3735481.jpeg" alt="">
+      <h3 id="refTitle"></h3>
+      <a class="btn-service" href="https://wa.me/18093937692?text=Necesito servicio de Refrigeración" target="_blank">WhatsApp</a>
     </div>
 
-    <!-- Pintura -->
-    <div class="service-card">
-        <img src="https://images.unsplash.com/photo-1508867743401-21ad68d1032a?auto=format&fit=crop&w=900&q=80" alt="Pintura">
-        <h3>Pintura</h3>
-        <p>Pintura profesional para casas, oficinas y locales.</p>
-        <button onclick="window.open('https://wa.me/18093937692?text=Hola!%20Quiero%20información%20sobre%20servicio%20de%20pintura.', '_blank')">Servicio de Pintura</button>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" alt="">
+      <h3 id="paintTitle"></h3>
+      <a class="btn-service" href="https://wa.me/18093937692?text=Necesito servicio de Pintura" target="_blank">WhatsApp</a>
     </div>
 
+  </div>
 </section>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/18093937692?text=Hola!%20Estoy%20interesado%20en%20sus%20servicios." class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Button">
+<!-- Floating WhatsApp -->
+<a id="floatingWhatsapp" href="https://wa.me/18093937692" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png">
 </a>
+
+<!-- Popup -->
+<div id="promoOverlay">
+  <div id="promoBox">
+    <div id="promoClose" onclick="closePromo()">×</div>
+    <h2 id="promoTitle"></h2>
+    <p id="promoText"></p>
+    <a id="promoWhats" class="btn-whats" href="https://wa.me/18093937692" target="_blank"></a>
+  </div>
+</div>
+
+<script>
+  /* Language Detection */
+  const userLang = navigator.language || navigator.userLanguage;
+  const isES = userLang.toLowerCase().startsWith("es");
+
+  const t = {
+    es: {
+      heroLead:"Especialistas en aire acondicionado, electricidad, plomería y más.",
+      services:"Nuestros Servicios",
+      ac:"Aire Acondicionado",
+      elec:"Electricidad",
+      plom:"Plomería",
+      ref:"Refrigeración",
+      paint:"Pintura",
+      promoTitle:"🔥 OFERTA EN AIRES ACONDICIONADOS",
+      promoText:"10% de descuento + diagnóstico GRATIS.",
+      promoBtn:"Aprovechar oferta"
+    },
+    en: {
+      heroLead:"Experts in AC, electrical, plumbing and more.",
+      services:"Our Services",
+      ac:"Air Conditioning",
+      elec:"Electricity",
+      plom:"Plumbing",
+      ref:"Refrigeration",
+      paint:"Painting",
+      promoTitle:"🔥 AIR CONDITIONING SPECIAL",
+      promoText:"10% OFF + FREE diagnosis.",
+      promoBtn:"Get offer"
+    }
+  };
+
+  const lang = isES ? t.es : t.en;
+
+  heroLead.innerText = lang.heroLead;
+  servicesTitle.innerText = lang.services;
+  acTitle.innerText = lang.ac;
+  elecTitle.innerText = lang.elec;
+  plomTitle.innerText = lang.plom;
+  refTitle.innerText = lang.ref;
+  paintTitle.innerText = lang.paint;
+  promoTitle.innerText = lang.promoTitle;
+  promoText.innerText = lang.promoText;
+  promoWhats.innerText = lang.promoBtn;
+
+  /* Popup */
+  setTimeout(()=>{ promoOverlay.style.display="flex"; },3000);
+  function closePromo(){ promoOverlay.style.display="none"; }
+</script>
 
 </body>
 </html>
