@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,16 +36,18 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0;font-family:Inter, Arial, Helvetica, sans-serif}
-    body{background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.45}
+    body{background:var(--bg);color:var(--text);-webkit-font-smoothing:antaliased;line-height:1.45}
 
-    /* HEADER with snow */
+    /* HEADER WITH NEW BACKGROUND IMAGE */
     header{
       position:relative;
       overflow:hidden;
       padding:80px 18px 70px;
       text-align:center;
-      background: linear-gradient(180deg, rgba(118,199,255,0.95), rgba(10,110,253,0.95));
       color:#fff;
+      background:
+        url("https://images.unsplash.com/photo-1597004891283-42bc1eecf06c?w=1600&auto=format&fit=crop") center/cover no-repeat,
+        linear-gradient(180deg, rgba(118,199,255,0.75), rgba(10,110,253,0.85));
     }
 
     header::before{
@@ -138,6 +140,7 @@
     .contact{
       display:grid;grid-template-columns:1fr 360px;gap:22px;margin:28px 0;align-items:start;
     }
+
     @media(max-width:940px){.contact{grid-template-columns:1fr}}
     .contact .left,.contact .right{
       background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(13,45,80,0.06)
@@ -153,21 +156,43 @@
     .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:12px}
     .testimonials .t{background:#fff;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(13,45,80,0.04)}
 
-    footer{margin-top:36px;background:var(--blue-1);color:#fff;padding:24px;text-align:center;border-radius:8px;margin-bottom:26px}
+    /* FOOTER UPDATED */
+    footer{
+      margin-top:36px;background:#000;color:#fff;padding:24px;text-align:center;border-radius:8px;margin-bottom:26px
+    }
 
     .whatsapp{
       position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:50%;background:#25D366;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,0.2);
       display:flex;align-items:center;justify-content:center;
     }
-    .whatsapp img,.whatsapp svg{width:34px;height:34px;display:block;fill:#fff}
-    .whatsapp svg path{fill:#fff}
 
-    /* Popup */
+    /* NEW WHATSAPP ICON SIZE */
+    .whatsapp img{width:38px;height:38px}
+
+    /* POPUP */
     .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9998}
     .popup{background:#fff;width:92%;max-width:420px;padding:20px;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
     .close-x{position:absolute;right:14px;top:10px;background:#fff;border-radius:50%;width:34px;height:34px;border:1px solid #e6eefc;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:800}
     .muted{color:#6b7986;font-size:14px}
     .small{font-size:13px;color:#6b7986}
+
+    /* NEW — CHAT BUBBLE */
+    .chat-bubble{
+      position:fixed;right:18px;bottom:96px;
+      background:#fff;border-radius:10px;padding:10px 14px;
+      box-shadow:0 4px 14px rgba(0,0,0,.15);
+      font-size:14px;font-weight:600;
+      z-index:9999;
+    }
+
+    /* NEW — CALL BUTTON */
+    .call-btn{
+      position:fixed;right:18px;bottom:160px;width:64px;height:64px;
+      border-radius:50%;background:#0a6efd;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);z-index:9999;
+    }
+    .call-btn img{width:34px;height:34px;filter:invert(1)}
   </style>
 </head>
 
@@ -180,7 +205,7 @@
       <h3 id="promoTitle">🔥 OFERTA EN AIRES ACONDICIONADOS</h3>
       <p id="promoText">Mantenimiento + Diagnóstico gratis en Punta Cana y Bávaro.</p>
       <div class="actions" style="margin-top:16px;display:flex;gap:10px;justify-content:center">
-        <a id="promoWhats" class="btn" href="https://wa.me/18093937692" target="_blank">Obtener oferta</a>
+        <a id="promoWhats" class="btn" href="https://wa.me/18093937692?text=Hola%2C%20quiero%20la%20oferta%20de%20mantenimiento" target="_blank">Obtener oferta</a>
         <button class="btn secondary" onclick="closePromo()">Cerrar</button>
       </div>
     </div>
@@ -193,66 +218,74 @@
     <p class="lead" id="heroLead">Especialistas en aire acondicionado, electricidad, plomería y más.</p>
 
     <div class="hero-ctas">
-      <a id="ctaWhats" class="btn" href="https://wa.me/18093937692" target="_blank">Solicitar servicio</a>
+      <a id="ctaWhats" class="btn" href="https://wa.me/18093937692?text=Hola%2C%20quiero%20un%20servicio" target="_blank">Solicitar servicio</a>
       <a id="ctaCall" class="btn secondary" href="tel:8093937692">Llamar: 809-393-7692</a>
     </div>
   </header>
+
+  <!-- CHAT BUBBLE -->
+  <div class="chat-bubble">¿Necesitas ayuda? 👋</div>
+
+  <!-- CALL BUTTON -->
+  <a class="call-btn" href="tel:8093937692">
+    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png">
+  </a>
+
+  <!-- WHATSAPP BUTTON -->
+  <a class="whatsapp" href="https://wa.me/18093937692?text=Hola%2C%20necesito%20información%20sobre%20sus%20servicios" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+  </a>
 
   <!-- MAIN -->
   <main class="container">
 
     <h2 class="section-title" id="servicesTitle">Nuestros Servicios</h2>
 
-    <!-- SERVICES -->
     <div class="services-grid">
 
       <article class="card">
-        <!-- AIRE ACONDICIONADO - Unsplash -->
-        <img src="https://images.unsplash.com/photo-1607761592655-0c6f3a9c91d1?w=1200&q=80&auto=format&fit=crop" alt="Aire acondicionado">
+        <img src="https://images.unsplash.com/photo-1581092795360-7a6a1a48ab9d?w=1200" alt="Aire acondicionado">
         <h3 id="acTitle">Aire Acondicionado</h3>
         <p>Instalación, reparación y mantenimiento. Diagnóstico gratis.</p>
-        <a id="acBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Cotizar</a>
+        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20necesito%20cotizar%20aire%20acondicionado" target="_blank">Cotizar</a>
       </article>
 
       <article class="card">
-        <!-- ELECTRICIDAD - Unsplash -->
-        <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=1200&q=80&auto=format&fit=crop" alt="Electricidad">
+        <img src="https://images.unsplash.com/photo-1581091012184-5af58c03655a?w=1200" alt="Electricidad">
         <h3 id="elecTitle">Electricidad</h3>
         <p>Soluciones seguras, tableros, 220V y más.</p>
-        <a id="elecBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Electricista</a>
+        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20necesito%20un%20electricista" target="_blank">Electricista</a>
       </article>
 
       <article class="card">
-        <!-- PLOMERÍA - Unsplash -->
-        <img src="https://images.unsplash.com/photo-1594737625785-c0e7d001f4be?w=1200&q=80&auto=format&fit=crop" alt="Plomería">
+        <img src="https://images.unsplash.com/photo-1602992708529-c9fdbf85f1d7?w=1200" alt="Plomería">
         <h3 id="plomTitle">Plomería</h3>
         <p>Fugas, calentadores, drenajes y emergencias.</p>
-        <a id="plomBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Plomero</a>
+        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20necesito%20un%20plomero" target="_blank">Plomero</a>
       </article>
 
       <article class="card">
-        <!-- REFRIGERACIÓN - Unsplash -->
-        <img src="https://images.unsplash.com/photo-1581091870627-3b5f1d57e2c6?w=1200&q=80&auto=format&fit=crop" alt="Refrigeración">
+        <img src="https://images.unsplash.com/photo-1556909114-7f15cc16dd08?w=1200" alt="Refrigeración">
         <h3 id="refTitle">Refrigeración</h3>
         <p>Neveras, freezers, cuartos fríos y bares.</p>
-        <a id="refBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Soporte</a>
+        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20necesito%20soporte%20de%20refrigeración" target="_blank">Soporte</a>
       </article>
 
       <article class="card">
-        <!-- PINTURA - Unsplash -->
-        <img src="https://images.unsplash.com/photo-1581093458791-9e1d68caf3bc?w=1200&q=80&auto=format&fit=crop" alt="Pintura">
+        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1200" alt="Pintura">
         <h3 id="paintTitle">Pintura Profesional</h3>
         <p>Acabados premium, interiores, Airbnbs y villas.</p>
-        <a id="paintBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Pintura</a>
+        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20necesito%20cotizar%20pintura" target="_blank">Pintura</a>
       </article>
 
     </div>
+
 
     <!-- OFFER -->
     <section class="offer">
       <h2 id="offerTitle">OFERTA ESPECIAL EN MANTENIMIENTO</h2>
       <p id="offerText">10% de descuento + diagnóstico gratis por tiempo limitado.</p>
-      <a id="offerBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Aprovechar oferta</a>
+      <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20quiero%20la%20oferta%20de%20mantenimiento" target="_blank">Aprovechar oferta</a>
     </section>
 
     <!-- CONTACT -->
@@ -264,7 +297,7 @@
         <div class="left">
           <h3 class="small">WhatsApp o llamada</h3>
           <p class="muted">Atención rápida en toda la zona Este.</p>
-          <p style="margin-top:10px;font-weight:800">WhatsApp: <a href="https://wa.me/18093937692" target="_blank">809-393-7692</a></p>
+          <p style="margin-top:10px;font-weight:800">WhatsApp: <a href="https://wa.me/18093937692?text=Hola%2C%20necesito%20información" target="_blank">809-393-7692</a></p>
 
           <h4 style="margin-top:18px">Preguntas frecuentes</h4>
           <p class="small"><strong>¿Atienden emergencias?</strong> Sí, 24/7 según disponibilidad.</p>
@@ -328,17 +361,9 @@
 
   </main>
 
-  <!-- WHATSAPP BUTTON -->
-  <a id="whatsappFloat" class="whatsapp" href="https://wa.me/18093937692" target="_blank" aria-label="WhatsApp">
-    <!-- SVG oficial (blanco sobre fondo verde) -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-hidden="true">
-      <path d="M16.004 3.2c-7.042 0-12.8 5.646-12.8 12.6 0 2.226.604 4.392 1.76 6.304L3.2 28.8l7.014-1.84c1.836.99 3.904 1.512 6.01 1.512h.006c7.05 0 12.8-5.646 12.8-12.6 0-3.367-1.33-6.532-3.746-8.922C22.854 4.53 19.55 3.2 16.004 3.2zm0 22.8c-1.836 0-3.63-.49-5.2-1.416l-.372-.22-4.164 1.094 1.112-4.04-.242-.414c-1.044-1.77-1.596-3.786-1.596-5.804 0-6.038 4.99-10.95 11.066-10.95 2.964 0 5.75 1.142 7.852 3.216 2.1 2.072 3.258 4.836 3.258 7.734 0 6.036-4.99 10.95-11.066 10.95zm6.144-7.896c-.336-.168-1.988-.984-2.296-1.096-.308-.112-.534-.168-.76.168-.224.336-.868 1.096-1.064 1.322-.196.224-.392.252-.728.084-.336-.168-1.42-.522-2.704-1.666-1-.888-1.676-1.986-1.872-2.322-.196-.336-.02-.514.148-.682.152-.152.336-.392.504-.588.168-.196.224-.336.336-.56.112-.224.056-.42-.028-.588-.084-.168-.76-1.834-1.04-2.514-.272-.652-.548-.564-.76-.572l-.648-.012c-.224 0-.588.084-.896.42-.308.336-1.176 1.148-1.176 2.8s1.204 3.244 1.372 3.472c.168.224 2.368 3.61 5.742 5.054.804.348 1.43.556 1.92.71.806.258 1.54.222 2.12.136.646-.096 1.988-.812 2.27-1.598.28-.784.28-1.456.196-1.598-.084-.14-.308-.224-.644-.392z"/>
-    </svg>
-  </a>
-
   <!-- FOOTER -->
   <footer>
-    <img src="https://i.imgur.com/5Qn6uH1.png" style="width:44px" alt="Cold Services">
+    <img src="https://i.imgur.com/5Qn6uH1.png" style="width:44px">
     <div style="font-weight:800">Cold Services</div>
     <div class="small">Punta Cana • Bávaro • Friusa — WhatsApp: 809-393-7692</div>
     <div class="small" style="margin-top:8px">© 2025 Cold Services — Diseño & SEO</div>
@@ -382,7 +407,6 @@
 
     const t = isSpanish ? content.es : content.en;
 
-    // Text content
     document.getElementById("heroLead").innerText = t.heroLead;
     document.getElementById("promoTitle").innerText = t.promoTitle;
     document.getElementById("promoText").innerText = t.promoText;
@@ -396,48 +420,6 @@
     document.getElementById("paintTitle").innerText = t.paintTitle;
     document.getElementById("ctaWhats").innerText = t.ctaWhats;
     document.getElementById("ctaCall").innerText = t.ctaCall;
-    document.getElementById("offerBtn").innerText = t.offerBtn;
-    document.getElementById("promoWhats").innerText = t.offerBtn;
-
-    /* WHATSAPP MESSAGES (predeterminados por servicio) */
-    const WA_NUMBER = "18093937692"; // mantén el número como en tu original
-
-    const messages = {
-      es: {
-        general: "Hola, estoy interesado en sus servicios. ¿Me puede ayudar?",
-        ac: "Hola, estoy interesado en el servicio de Aire Acondicionado. Mi nombre es: %0ANecesito ayuda con:",
-        elec: "Hola, estoy interesado en el servicio de Electricidad. Mi nombre es: %0ANecesito ayuda con:",
-        plom: "Hola, estoy interesado en el servicio de Plomería. Mi nombre es: %0ANecesito ayuda con:",
-        ref: "Hola, estoy interesado en el servicio de Refrigeración. Mi nombre es: %0ANecesito ayuda con:",
-        paint: "Hola, estoy interesado en el servicio de Pintura. Mi nombre es: %0ANecesito ayuda con:",
-        offer: "Hola, veo la oferta de mantenimiento (10% + diagnóstico). Quiero más información."
-      },
-      en: {
-        general: "Hello, I'm interested in your services. Can you help me?",
-        ac: "Hello, I'm interested in the Air Conditioning service. My name is: %0AI need help with:",
-        elec: "Hello, I'm interested in the Electrical service. My name is: %0AI need help with:",
-        plom: "Hello, I'm interested in the Plumbing service. My name is: %0AI need help with:",
-        ref: "Hello, I'm interested in the Refrigeration service. My name is: %0AI need help with:",
-        paint: "Hello, I'm interested in the Painting service. My name is: %0AI need help with:",
-        offer: "Hello, I saw the maintenance offer (10% + diagnosis). I want more information."
-      }
-    };
-
-    const langKey = isSpanish ? "es" : "en";
-
-    // Helper to set href with encoded text
-    function waHref(text){ return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text); }
-
-    // Set all service button hrefs with prefilled messages
-    document.getElementById("acBtn").href = waHref(messages[langKey].ac);
-    document.getElementById("elecBtn").href = waHref(messages[langKey].elec);
-    document.getElementById("plomBtn").href = waHref(messages[langKey].plom);
-    document.getElementById("refBtn").href = waHref(messages[langKey].ref);
-    document.getElementById("paintBtn").href = waHref(messages[langKey].paint);
-    document.getElementById("offerBtn").href = waHref(messages[langKey].offer);
-    document.getElementById("promoWhats").href = waHref(messages[langKey].offer);
-    document.getElementById("ctaWhats").href = waHref(messages[langKey].general);
-    document.getElementById("whatsappFloat").href = waHref(messages[langKey].general);
 
     /* POPUP */
     const PROMO_KEY = "coldservices_popup_shown";
@@ -458,29 +440,24 @@
       const msg=document.getElementById("message").value.trim();
       const result=document.getElementById("formResult");
 
-      if(!name){
+      if(!name || !msg){
         result.style.display="block";
         result.innerText=isSpanish?"Completa los campos requeridos.":"Complete required fields.";
         return;
       }
 
-      // If message empty, use a sensible default per language
-      const userMessage = msg || (isSpanish ? "Hola, estoy interesado en sus servicios. Por favor contáctenme." : "Hello, I'm interested in your services. Please contact me.");
-
-      // Build the whatsapp text including name and optional email
-      let text = (isSpanish ? "Hola, soy " : "Hello, I am ") + name;
-      if(email) text += (isSpanish ? " - Email: " : " - Email: ") + email;
-      text += (isSpanish ? " - Necesito: " : " - I need: ") + userMessage;
-
-      // Open WhatsApp
-      window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
+      const text=encodeURIComponent(
+        (isSpanish?"Hola, soy ":"Hello, I am ")+name+
+        (email?(" - Email: "+email):"")+
+        (isSpanish?" - Necesito: ":" - I need: ")+msg
+      );
+      window.open("https://wa.me/18093937692?text="+text,"_blank");
 
       result.style.display="block";
       result.innerText=t.formSuccess;
       document.getElementById("leadForm").reset();
     }
 
-    // Close popup on ESC
     document.addEventListener("keydown", e=>{if(e.key==="Escape") closePromo()});
   </script>
 
