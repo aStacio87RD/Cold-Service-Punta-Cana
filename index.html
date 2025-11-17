@@ -5,25 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cold Services – Aire Acondicionado & Servicios Generales</title>
 
+  <!-- SEO -->
+  <meta name="description" content="Cold Services: Instalación, mantenimiento y reparación de aires acondicionados, electricidad, plomería, refrigeración y pintura. Servicios para hogar, oficinas y comercios.">
+  <meta name="keywords" content="Aire acondicionado, Electricidad, Plomería, Refrigeración, Pintura, Servicios generales, Instalación de aires, Punta Cana, República Dominicana">
+  <meta name="author" content="Cold Services">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Arial", sans-serif; }
-    body { background: #f4f8fc; color: #1d2d44; }
+    body { background: #f4f8fc; color: #1d2d44; overflow-x: hidden; }
 
+    /* HEADER */
     header {
       background: linear-gradient(135deg, #0a6efd, #0dcaf0);
       color: white;
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
     }
 
-    header h1 { font-size: 38px; font-weight: 800; }
-    header p { font-size: 18px; margin-top: 10px; }
+    .logo {
+      width: 90px;
+      margin-bottom: 15px;
+    }
 
+    .title-3d {
+      font-size: 48px;
+      font-weight: 900;
+      text-shadow: 0px 3px 0px #003d91, 0px 6px 0px #002f6e, 0px 9px 0px #001d46;
+    }
+
+    header p { font-size: 18px; margin-top: 15px; }
+
+    /* GRID */
     .container { width: 95%; max-width: 1200px; margin: auto; padding: 40px 0; }
 
     .section-title {
       text-align: center;
-      font-size: 30px;
+      font-size: 32px;
       font-weight: bold;
       margin-bottom: 40px;
       color: #0a6efd;
@@ -31,13 +48,13 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
     }
 
     .service-card {
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 20px;
       text-align: center;
       box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
@@ -48,59 +65,91 @@
 
     .service-card img {
       width: 100%;
-      height: 160px;
+      height: 170px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 15px;
     }
 
-    .service-card h3 { font-size: 20px; margin-bottom: 10px; }
-    .service-card p { font-size: 15px; color: #555; }
-
-    .offer-box {
-      background: #0dcaf0;
+    /* OFFER POPUP */
+    #offerPopup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: white;
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      z-index: 9999;
+      opacity: 0;
+      transition: .4s;
       text-align: center;
-      color: white;
-      margin: 40px 0;
+      width: 85%;
+      max-width: 400px;
     }
 
-    .offer-box h2 { font-size: 32px; margin-bottom: 10px; font-weight: 800; }
-    .offer-box p { font-size: 18px; }
+    #offerPopup.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
 
+    .popup-btn {
+      background: #0a6efd;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+
+    /* CONTACT FORM */
     .contact-section {
-      background: #ffffff;
+      background: white;
       padding: 40px;
       border-radius: 12px;
       text-align: center;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin-bottom: 60px;
+      margin: 60px 0;
     }
 
-    .contact-section h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #0a6efd;
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
 
-    .buttons {
-      margin-top: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 10px;
+    button {
       background: #0a6efd;
       color: white;
+      padding: 14px 30px;
+      border: none;
       border-radius: 8px;
-      text-decoration: none;
+      margin-top: 20px;
+      cursor: pointer;
       font-size: 18px;
-      transition: 0.3s;
     }
 
-    .btn:hover { background: #084298; }
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+      background: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      z-index: 9999;
+    }
+
+    .whatsapp-float img {
+      width: 100%;
+      height: 100%;
+    }
 
     footer {
       background: #0a6efd;
@@ -112,44 +161,24 @@
   </style>
 
   <script>
-    // Detectar idioma del navegador
+    /* Idioma */
     const lang = navigator.language.startsWith("es") ? "es" : "en";
 
     const texts = {
       es: {
-        heroTitle: "Cold Services",
         heroText: "Especialistas en aire acondicionado, electricidad, plomería y servicios generales.",
         servicesTitle: "Nuestros Servicios",
-        offerTitle: "OFERTA ESPECIAL EN AIRES ACONDICIONADOS",
-        offerText: "Instalación • Reparación • Mantenimiento",
-        contactTitle: "Contáctanos",
-        contactWhatsapp: "Escríbenos por WhatsApp",
-        contactCall: "Llámanos Directamente",
       },
       en: {
-        heroTitle: "Cold Services",
         heroText: "Experts in air conditioning, electrical, plumbing and general home services.",
         servicesTitle: "Our Services",
-        offerTitle: "SPECIAL OFFER ON AIR CONDITIONING",
-        offerText: "Installation • Repair • Maintenance",
-        contactTitle: "Contact Us",
-        contactWhatsapp: "Message us on WhatsApp",
-        contactCall: "Call Us Directly",
       },
     };
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const t = texts[lang];
-
-      document.getElementById("heroTitle").innerText = t.heroTitle;
-      document.getElementById("heroText").innerText = t.heroText;
-      document.getElementById("servicesTitle").innerText = t.servicesTitle;
-      document.getElementById("offerTitle").innerText = t.offerTitle;
-      document.getElementById("offerText").innerText = t.offerText;
-      document.getElementById("contactTitle").innerText = t.contactTitle;
-      document.getElementById("whatsappText").innerText = t.contactWhatsapp;
-      document.getElementById("callText").innerText = t.contactCall;
-    });
+    // Popup delay
+    setTimeout(() => {
+      document.getElementById("offerPopup").classList.add("active");
+    }, 2000);
   </script>
 
 </head>
@@ -157,7 +186,8 @@
 <body>
 
   <header>
-    <h1 id="heroTitle"></h1>
+    <img class="logo" src="https://i.imgur.com/5Qn6uH1.png" alt="Cold Services Logo">
+    <h1 class="title-3d">COLD SERVICES</h1>
     <p id="heroText"></p>
   </header>
 
@@ -166,55 +196,68 @@
 
     <div class="services-grid">
       <div class="service-card">
-        <img src="https://i.imgur.com/9ffRH1G.jpg" alt="Aire acondicionado">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Aire acondicionado">
         <h3>Aire Acondicionado</h3>
         <p>Instalación, mantenimiento y reparación.</p>
       </div>
 
       <div class="service-card">
-        <img src="https://i.imgur.com/nZQdSLY.jpg" alt="Electricidad">
+        <img src="https://images.unsplash.com/photo-1581090468280-5c49d8f22d1d" alt="Electricidad">
         <h3>Electricidad</h3>
-        <p>Soluciones eléctricas para hogar y oficina.</p>
+        <p>Soluciones eléctricas profesionales.</p>
       </div>
 
       <div class="service-card">
-        <img src="https://i.imgur.com/bv8DjxW.jpg" alt="Plomería">
+        <img src="https://images.unsplash.com/photo-1565372910085-5c11fddb3d19" alt="Plomería">
         <h3>Plomería</h3>
-        <p>Reparaciones, fugas, instalaciones y más.</p>
+        <p>Reparaciones, fugas e instalaciones.</p>
       </div>
 
       <div class="service-card">
-        <img src="https://i.imgur.com/Jv1H2eO.jpg" alt="Refrigeración">
+        <img src="https://images.unsplash.com/photo-1585307803381-562d20ae60ef" alt="Refrigeración">
         <h3>Refrigeración</h3>
-        <p>Reparación de neveras, freezers y equipos.</p>
+        <p>Reparación de neveras y equipos.</p>
       </div>
 
       <div class="service-card">
-        <img src="https://i.imgur.com/2J8a1xB.jpg" alt="Pintura">
+        <img src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1" alt="Pintura">
         <h3>Pintura</h3>
-        <p>Pintura profesional para interiores y exteriores.</p>
+        <p>Interiores y exteriores.</p>
       </div>
     </div>
-
-    <div class="offer-box">
-      <h2 id="offerTitle"></h2>
-      <p id="offerText"></p>
-    </div>
-
-    <div class="contact-section">
-      <h2 id="contactTitle"></h2>
-
-      <div class="buttons">
-        <a class="btn" href="https://wa.me/18093937692" target="_blank" id="whatsappText"></a>
-        <a class="btn" href="tel:8093937692" id="callText"></a>
-      </div>
-    </div>
-
   </section>
+
+  <!-- POPUP -->
+  <div id="offerPopup">
+    <h2>🔥 OFERTA EN AIRES ACONDICIONADOS</h2>
+    <p>Mantenimiento – Instalación – Reparación</p>
+    <a class="popup-btn" href="https://wa.me/18093937692" target="_blank">Obtener oferta</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>Contáctanos</h2>
+    <input type="text" placeholder="Nombre">
+    <input type="email" placeholder="Correo">
+    <textarea rows="5" placeholder="Mensaje"></textarea>
+    <button>Enviar</button>
+  </div>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="whatsapp-float" href="https://wa.me/18093937692" target="_blank">
+    <img src="https://i.imgur.com/2M9kFQy.png">
+  </a>
 
   <footer>
     Cold Services © 2025 – Todos los derechos reservados
   </footer>
+
+  <script>
+    // Traducción dinámica
+    const t = texts[lang];
+    document.getElementById("heroText").innerText = t.heroText;
+    document.getElementById("servicesTitle").innerText = t.servicesTitle;
+  </script>
 
 </body>
 </html>
