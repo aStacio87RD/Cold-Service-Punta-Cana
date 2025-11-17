@@ -10,16 +10,18 @@
   <meta name="keywords" content="aire acondicionado punta cana, reparación aire acondicionado bávaro, electricista punta cana, plomería punta cana, refrigeración punta cana, servicios friusa">
   <meta name="author" content="Cold Services">
 
-  <!-- Schema -->
+  <!-- Schema: LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "name": "Cold Services",
-    "logo": "https://i.imgur.com/5Qn6uH1.png",
+    "description": "Instalación, mantenimiento y reparación de aires acondicionados. Servicios de electricidad, plomería, refrigeración y pintura en Punta Cana, Bávaro y Friusa.",
     "telephone": "+18093937692",
-    "description": "Servicios de aire acondicionado, electricidad, plomería y refrigeración en Punta Cana.",
-    "areaServed": ["Punta Cana","Bávaro","Friusa","Verón"],
+    "areaServed": ["Punta Cana","Bávaro","Friusa","Verón","Cocotal","White Sands","Los Corales"],
+    "url": "",
+    "logo": "https://i.imgur.com/5Qn6uH1.png",
+    "sameAs": [],
     "openingHours": "Mo-Su 00:00-23:59"
   }
   </script>
@@ -33,147 +35,454 @@
       --cta:#0a6efd;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter, Arial, sans-serif}
-    body{background:var(--bg);color:var(--text);line-height:1.45}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter, Arial, Helvetica, sans-serif}
+    body{background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.45}
 
-    /* HEADER */
+    /* HEADER with snow */
     header{
       position:relative;
+      overflow:hidden;
       padding:80px 18px 70px;
       text-align:center;
-      background: linear-gradient(180deg,#76c7ff,#0a6efd);
+      background: linear-gradient(180deg, rgba(118,199,255,0.95), rgba(10,110,253,0.95));
       color:#fff;
     }
 
-    .logo{width:84px;margin-bottom:12px}
-
-    .title-ice{
-      font-size:44px;font-weight:900;text-transform:uppercase;
-      color:white;text-shadow:0 4px 12px rgba(0,0,0,.25);
+    header::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        radial-gradient(white 1px, rgba(255,255,255,0) 2px),
+        radial-gradient(white 1px, rgba(255,255,255,0) 2px);
+      background-size: 20px 20px, 60px 60px;
+      background-position: 0 0, 30px -10px;
+      opacity:.35;
+      animation: snow 12s linear infinite;
+      pointer-events:none;
+    }
+    @keyframes snow{
+      0%{background-position:0 0,30px -10px}
+      100%{background-position:0 1000px,30px 990px}
     }
 
-    header p.lead{margin-top:12px;font-size:18px;color:#fff}
+    .logo{width:84px;height:auto;margin:0 auto 12px;display:block}
+
+    /* ICE TITLE */
+    .title-ice{
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:4px;
+      font-size:44px;
+      line-height:1;
+      display:inline-block;
+      padding:8px 18px;
+      background: linear-gradient(180deg,#ffffffcc,#cfeeffcc);
+      color:#effbff;
+      border-radius:6px;
+      position:relative;
+      z-index:2;
+      text-shadow:
+        0 1px 0 rgba(255,255,255,0.8),
+        0 6px 8px rgba(0,0,0,0.18),
+        0 0 18px rgba(173,230,255,0.6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip:text;
+    }
+
+    .title-ice::after{
+      content:"";
+      position:absolute;left:0;right:0;bottom:-6px;height:10px;
+      background:linear-gradient(90deg, rgba(0,77,145,0.18), rgba(0,0,0,0.06));
+      border-radius:6px;
+      transform:skewY(-2deg);
+      z-index:-1;
+    }
+
+    header p.lead{
+      margin-top:12px;font-size:18px;color:rgba(255,255,255,0.95)
+    }
 
     .hero-ctas{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
     .btn{
-      display:inline-block;padding:12px 18px;border-radius:10px;
-      text-decoration:none;font-weight:700;color:#fff;background:var(--cta);
-      box-shadow:0 6px 18px rgba(10,110,253,0.18);transition:0.15s;
+      display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;
+      color:#fff;background:var(--cta);box-shadow:0 6px 18px rgba(10,110,253,0.18);
+      transition:transform .18s ease, box-shadow .18s;
     }
-    .btn:hover{transform:translateY(-4px)}
-    .btn.secondary{background:#ffffff33;border:1px solid rgba(255,255,255,0.2)}
+    .btn.secondary{background:#ffffff33;border:1px solid rgba(255,255,255,0.12)}
+    .btn:hover{transform:translateY(-4px);}
 
     /* MAIN */
     .container{max-width:1180px;margin:30px auto;padding:0 18px}
     .section-title{font-size:28px;color:var(--blue-1);text-align:center;margin-bottom:22px;font-weight:800}
 
     .services-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
     }
     .card{
-      background:#fff;border-radius:12px;padding:16px;
-      box-shadow:0 6px 18px rgba(13,45,80,0.06);
+      background:#fff;border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(13,45,80,0.06);text-align:left;
     }
-    .card img{
-      width:100%;height:170px;object-fit:cover;border-radius:10px;margin-bottom:12px
-    }
-    .card h3{font-size:18px;margin-bottom:6px}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+    .card h3{font-size:18px;margin-bottom:8px}
+    .card p{color:#576672;font-size:14px;margin-bottom:12px}
 
-    /* WHATSAPP FLOAT */
+    /* Offer */
+    .offer{
+      background:linear-gradient(90deg,var(--blue-1),var(--blue-2));color:#fff;padding:20px;border-radius:12px;text-align:center;margin:28px 0;
+      box-shadow:0 12px 30px rgba(10,110,253,0.12)
+    }
+    .offer h2{font-size:20px;margin-bottom:8px}
+    .offer p{opacity:.95}
+
+    /* Contact Section */
+    .contact{
+      display:grid;grid-template-columns:1fr 360px;gap:22px;margin:28px 0;align-items:start;
+    }
+    @media(max-width:940px){.contact{grid-template-columns:1fr}}
+    .contact .left,.contact .right{
+      background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(13,45,80,0.06)
+    }
+
+    label{display:block;font-weight:700;margin-top:10px;font-size:13px}
+    input[type="text"],input[type="email"],textarea{
+      width:100%;padding:10px;border-radius:8px;border:1px solid #d6e9ff;margin-top:8px;font-size:14px
+    }
+    button.form-submit{background:var(--cta);color:#fff;padding:12px 14px;border-radius:8px;border:none;margin-top:12px;font-weight:800}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:12px}
+    .testimonials .t{background:#fff;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(13,45,80,0.04)}
+
+    footer{margin-top:36px;background:var(--blue-1);color:#fff;padding:24px;text-align:center;border-radius:8px;margin-bottom:26px}
+
     .whatsapp{
-      position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:50%;
-      background:#25D366;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,.3);
+      position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:50%;background:#25D366;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,0.2);
       display:flex;align-items:center;justify-content:center;
     }
-    .whatsapp svg{width:38px;height:38px;fill:white}
+    .whatsapp img,.whatsapp svg{width:34px;height:34px;display:block;fill:#fff}
+    .whatsapp svg path{fill:#fff}
 
-    footer{
-      margin-top:36px;background:var(--blue-1);color:#fff;padding:24px;text-align:center;
-      border-radius:8px;margin-bottom:26px
-    }
+    /* Popup */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9998}
+    .popup{background:#fff;width:92%;max-width:420px;padding:20px;border-radius:12px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .close-x{position:absolute;right:14px;top:10px;background:#fff;border-radius:50%;width:34px;height:34px;border:1px solid #e6eefc;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:800}
+    .muted{color:#6b7986;font-size:14px}
+    .small{font-size:13px;color:#6b7986}
   </style>
 </head>
 
 <body>
 
+  <!-- POPUP -->
+  <div id="promoOverlay" class="overlay" style="display:none">
+    <div class="popup">
+      <div class="close-x" onclick="closePromo()">×</div>
+      <h3 id="promoTitle">🔥 OFERTA EN AIRES ACONDICIONADOS</h3>
+      <p id="promoText">Mantenimiento + Diagnóstico gratis en Punta Cana y Bávaro.</p>
+      <div class="actions" style="margin-top:16px;display:flex;gap:10px;justify-content:center">
+        <a id="promoWhats" class="btn" href="https://wa.me/18093937692" target="_blank">Obtener oferta</a>
+        <button class="btn secondary" onclick="closePromo()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER -->
   <header>
     <img class="logo" src="https://i.imgur.com/5Qn6uH1.png" alt="Cold Services logo"/>
     <div class="title-ice">COLD SERVICES</div>
-    <p class="lead">Especialistas en aire acondicionado, electricidad, plomería, refrigeración y pintura.</p>
+    <p class="lead" id="heroLead">Especialistas en aire acondicionado, electricidad, plomería y más.</p>
 
     <div class="hero-ctas">
-      <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20quiero%20solicitar%20un%20servicio." target="_blank">Solicitar servicio</a>
-      <a class="btn secondary" href="tel:8093937692">Llamar: 809-393-7692</a>
+      <a id="ctaWhats" class="btn" href="https://wa.me/18093937692" target="_blank">Solicitar servicio</a>
+      <a id="ctaCall" class="btn secondary" href="tel:8093937692">Llamar: 809-393-7692</a>
     </div>
   </header>
 
   <!-- MAIN -->
   <main class="container">
 
-    <h2 class="section-title">Nuestros Servicios</h2>
+    <h2 class="section-title" id="servicesTitle">Nuestros Servicios</h2>
 
+    <!-- SERVICES -->
     <div class="services-grid">
 
-      <!-- Aire Acondicionado -->
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1607761592655-0c6f3a9c91d1?w=1200&q=70&auto=format" alt="Aire acondicionado técnico">
-        <h3>Aire Acondicionado</h3>
-        <p>Instalación, reparación y mantenimiento profesional.</p>
-        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Aire%20Acondicionado.%20Mi%20nombre%20es%3A%20%0ANecesito%20ayuda%20con%3A%20" target="_blank">Cotizar</a>
+        <!-- AIRE ACONDICIONADO - Unsplash -->
+        <img src="https://images.unsplash.com/photo-1607761592655-0c6f3a9c91d1?w=1200&q=80&auto=format&fit=crop" alt="Aire acondicionado">
+        <h3 id="acTitle">Aire Acondicionado</h3>
+        <p>Instalación, reparación y mantenimiento. Diagnóstico gratis.</p>
+        <a id="acBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Cotizar</a>
       </article>
 
-      <!-- Electricidad -->
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=1200&q=70&auto=format" alt="Electricista profesional">
-        <h3>Electricidad</h3>
-        <p>Instalaciones eléctricas, 220V, fallas y tableros.</p>
-        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Electricidad.%20Mi%20nombre%20es%3A%20%0ANecesito%20ayuda%20con%3A%20" target="_blank">Electricista</a>
+        <!-- ELECTRICIDAD - Unsplash -->
+        <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=1200&q=80&auto=format&fit=crop" alt="Electricidad">
+        <h3 id="elecTitle">Electricidad</h3>
+        <p>Soluciones seguras, tableros, 220V y más.</p>
+        <a id="elecBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Electricista</a>
       </article>
 
-      <!-- Plomería -->
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1594737625785-c0e7d001f4be?w=1200&q=70&auto=format" alt="Plomería reparación">
-        <h3>Plomería</h3>
-        <p>Fugas, tuberías, calentadores y emergencias.</p>
-        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Plomer%C3%ADa.%20Mi%20nombre%20es%3A%20%0ANecesito%20ayuda%20con%3A%20" target="_blank">Plomero</a>
+        <!-- PLOMERÍA - Unsplash -->
+        <img src="https://images.unsplash.com/photo-1594737625785-c0e7d001f4be?w=1200&q=80&auto=format&fit=crop" alt="Plomería">
+        <h3 id="plomTitle">Plomería</h3>
+        <p>Fugas, calentadores, drenajes y emergencias.</p>
+        <a id="plomBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Plomero</a>
       </article>
 
-      <!-- Refrigeración -->
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1581091870627-3b5f1d57e2c6?w=1200&q=70&auto=format" alt="Refrigeración comercial">
-        <h3>Refrigeración</h3>
-        <p>Neveras, freezers y cuartos fríos.</p>
-        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Refrigeraci%C3%B3n.%20Mi%20nombre%20es%3A%20%0ANecesito%20ayuda%20con%3A%20" target="_blank">Soporte</a>
+        <!-- REFRIGERACIÓN - Unsplash -->
+        <img src="https://images.unsplash.com/photo-1581091870627-3b5f1d57e2c6?w=1200&q=80&auto=format&fit=crop" alt="Refrigeración">
+        <h3 id="refTitle">Refrigeración</h3>
+        <p>Neveras, freezers, cuartos fríos y bares.</p>
+        <a id="refBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Soporte</a>
       </article>
 
-      <!-- Pintura -->
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1581093458791-9e1d68caf3bc?w=1200&q=70&auto=format" alt="Pintura profesional">
-        <h3>Pintura Profesional</h3>
-        <p>Acabados premium para casas, villas y Airbnbs.</p>
-        <a class="btn" href="https://wa.me/18093937692?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Pintura.%20Mi%20nombre%20es%3A%20%0ANecesito%20ayuda%20con%3A%20" target="_blank">Pintura</a>
+        <!-- PINTURA - Unsplash -->
+        <img src="https://images.unsplash.com/photo-1581093458791-9e1d68caf3bc?w=1200&q=80&auto=format&fit=crop" alt="Pintura">
+        <h3 id="paintTitle">Pintura Profesional</h3>
+        <p>Acabados premium, interiores, Airbnbs y villas.</p>
+        <a id="paintBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Pintura</a>
       </article>
 
     </div>
 
+    <!-- OFFER -->
+    <section class="offer">
+      <h2 id="offerTitle">OFERTA ESPECIAL EN MANTENIMIENTO</h2>
+      <p id="offerText">10% de descuento + diagnóstico gratis por tiempo limitado.</p>
+      <a id="offerBtn" class="btn" href="https://wa.me/18093937692" target="_blank">Aprovechar oferta</a>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <h2 class="section-title" id="contactTitle">Contáctanos</h2>
+
+      <div class="contact">
+
+        <div class="left">
+          <h3 class="small">WhatsApp o llamada</h3>
+          <p class="muted">Atención rápida en toda la zona Este.</p>
+          <p style="margin-top:10px;font-weight:800">WhatsApp: <a href="https://wa.me/18093937692" target="_blank">809-393-7692</a></p>
+
+          <h4 style="margin-top:18px">Preguntas frecuentes</h4>
+          <p class="small"><strong>¿Atienden emergencias?</strong> Sí, 24/7 según disponibilidad.</p>
+          <p class="small"><strong>¿Diagnóstico?</strong> Gratis por oferta vigente.</p>
+        </div>
+
+        <aside class="right">
+          <h3 class="small" id="formTitle">Enviar consulta</h3>
+
+          <form id="leadForm" onsubmit="submitForm(event)">
+            <label for="name">Nombre</label>
+            <input id="name" required>
+
+            <label for="email">Correo (opcional)</label>
+            <input id="email" type="email">
+
+            <label for="message">Mensaje</label>
+            <textarea id="message" required></textarea>
+
+            <button class="form-submit">Enviar</button>
+            <p id="formResult" class="small" style="display:none;margin-top:10px"></p>
+          </form>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section style="margin-top:20px">
+      <h2 class="section-title">Testimonios</h2>
+
+      <div class="testimonials">
+        <div class="t">
+          <strong>Juan R., Los Corales</strong>
+          <p class="small">“Arreglaron mi aire el mismo día. Servicio top.”</p>
+        </div>
+
+        <div class="t">
+          <strong>María P., Cocotal</strong>
+          <p class="small">“Trabajo eléctrico limpio y profesional.”</p>
+        </div>
+
+        <div class="t">
+          <strong>Alex G., White Sands</strong>
+          <p class="small">“La pintura quedó perfecta.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section style="margin-top:20px">
+      <h2 class="section-title">Zona de cobertura</h2>
+
+      <div style="border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(13,45,80,.06)">
+        <iframe loading="lazy" style="width:100%;height:300px;border:0"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47925.80485106431!2d-68.45861667775083!3d18.560194170395746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea892f6f7ee3b0d%3A0xf7b3c6c2b47d2c0b!2sPunta%20Cana%2C%20RD!5e0!3m2!1ses!2sdo!4v1600000000000">
+        </iframe>
+      </div>
+    </section>
+
   </main>
 
-  <!-- WHATSAPP FLOATING BUTTON -->
-  <a class="whatsapp" href="https://wa.me/18093937692?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- WHATSAPP BUTTON -->
+  <a id="whatsappFloat" class="whatsapp" href="https://wa.me/18093937692" target="_blank" aria-label="WhatsApp">
+    <!-- SVG oficial (blanco sobre fondo verde) -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-hidden="true">
       <path d="M16.004 3.2c-7.042 0-12.8 5.646-12.8 12.6 0 2.226.604 4.392 1.76 6.304L3.2 28.8l7.014-1.84c1.836.99 3.904 1.512 6.01 1.512h.006c7.05 0 12.8-5.646 12.8-12.6 0-3.367-1.33-6.532-3.746-8.922C22.854 4.53 19.55 3.2 16.004 3.2zm0 22.8c-1.836 0-3.63-.49-5.2-1.416l-.372-.22-4.164 1.094 1.112-4.04-.242-.414c-1.044-1.77-1.596-3.786-1.596-5.804 0-6.038 4.99-10.95 11.066-10.95 2.964 0 5.75 1.142 7.852 3.216 2.1 2.072 3.258 4.836 3.258 7.734 0 6.036-4.99 10.95-11.066 10.95zm6.144-7.896c-.336-.168-1.988-.984-2.296-1.096-.308-.112-.534-.168-.76.168-.224.336-.868 1.096-1.064 1.322-.196.224-.392.252-.728.084-.336-.168-1.42-.522-2.704-1.666-1-.888-1.676-1.986-1.872-2.322-.196-.336-.02-.514.148-.682.152-.152.336-.392.504-.588.168-.196.224-.336.336-.56.112-.224.056-.42-.028-.588-.084-.168-.76-1.834-1.04-2.514-.272-.652-.548-.564-.76-.572l-.648-.012c-.224 0-.588.084-.896.42-.308.336-1.176 1.148-1.176 2.8s1.204 3.244 1.372 3.472c.168.224 2.368 3.61 5.742 5.054.804.348 1.43.556 1.92.71.806.258 1.54.222 2.12.136.646-.096 1.988-.812 2.27-1.598.28-.784.28-1.456.196-1.598-.084-.14-.308-.224-.644-.392z"/>
     </svg>
   </a>
 
   <!-- FOOTER -->
   <footer>
-    <img src="https://i.imgur.com/5Qn6uH1.png" style="width:44px">
+    <img src="https://i.imgur.com/5Qn6uH1.png" style="width:44px" alt="Cold Services">
     <div style="font-weight:800">Cold Services</div>
     <div class="small">Punta Cana • Bávaro • Friusa — WhatsApp: 809-393-7692</div>
     <div class="small" style="margin-top:8px">© 2025 Cold Services — Diseño & SEO</div>
   </footer>
+
+  <script>
+    /* MULTILANGUAGE */
+    const userLang = navigator.language || "es";
+    const isSpanish = userLang.toLowerCase().startsWith("es");
+
+    const content = {
+      es:{heroLead:"Especialistas en aire acondicionado, electricidad, plomería, refrigeración y pintura.",
+          promoTitle:"🔥 OFERTA EN AIRES ACONDICIONADOS",
+          promoText:"10% de descuento + diagnóstico GRATIS.",
+          offerBtn:"Aprovechar oferta",
+          formSuccess:"Gracias. Te escribiremos en WhatsApp.",
+          servicesTitle:"Nuestros Servicios",
+          contactTitle:"Contáctanos",
+          acTitle:"Aire Acondicionado — Instalación & Mantenimiento",
+          elecTitle:"Electricidad — Técnicos Certificados",
+          plomTitle:"Plomería — Reparaciones Rápidas",
+          refTitle:"Refrigeración Comercial",
+          paintTitle:"Pintura Profesional",
+          ctaWhats:"Solicitar servicio",
+          ctaCall:"Llamar: 809-393-7692"},
+      en:{heroLead:"Experts in AC, electrical, plumbing, refrigeration and painting.",
+          promoTitle:"🔥 AC SPECIAL OFFER",
+          promoText:"10% off + FREE diagnosis.",
+          offerBtn:"Get offer",
+          formSuccess:"Thanks! We will contact you on WhatsApp.",
+          servicesTitle:"Our Services",
+          contactTitle:"Contact Us",
+          acTitle:"Air Conditioning — Installation & Maintenance",
+          elecTitle:"Electrical — Certified Technicians",
+          plomTitle:"Plumbing — Fast Repairs",
+          refTitle:"Commercial Refrigeration",
+          paintTitle:"Professional Painting",
+          ctaWhats:"Request service",
+          ctaCall:"Call: 809-393-7692"}
+    };
+
+    const t = isSpanish ? content.es : content.en;
+
+    // Text content
+    document.getElementById("heroLead").innerText = t.heroLead;
+    document.getElementById("promoTitle").innerText = t.promoTitle;
+    document.getElementById("promoText").innerText = t.promoText;
+    document.getElementById("promoWhats").innerText = t.offerBtn;
+    document.getElementById("servicesTitle").innerText = t.servicesTitle;
+    document.getElementById("contactTitle").innerText = t.contactTitle;
+    document.getElementById("acTitle").innerText = t.acTitle;
+    document.getElementById("elecTitle").innerText = t.elecTitle;
+    document.getElementById("plomTitle").innerText = t.plomTitle;
+    document.getElementById("refTitle").innerText = t.refTitle;
+    document.getElementById("paintTitle").innerText = t.paintTitle;
+    document.getElementById("ctaWhats").innerText = t.ctaWhats;
+    document.getElementById("ctaCall").innerText = t.ctaCall;
+    document.getElementById("offerBtn").innerText = t.offerBtn;
+    document.getElementById("promoWhats").innerText = t.offerBtn;
+
+    /* WHATSAPP MESSAGES (predeterminados por servicio) */
+    const WA_NUMBER = "18093937692"; // mantén el número como en tu original
+
+    const messages = {
+      es: {
+        general: "Hola, estoy interesado en sus servicios. ¿Me puede ayudar?",
+        ac: "Hola, estoy interesado en el servicio de Aire Acondicionado. Mi nombre es: %0ANecesito ayuda con:",
+        elec: "Hola, estoy interesado en el servicio de Electricidad. Mi nombre es: %0ANecesito ayuda con:",
+        plom: "Hola, estoy interesado en el servicio de Plomería. Mi nombre es: %0ANecesito ayuda con:",
+        ref: "Hola, estoy interesado en el servicio de Refrigeración. Mi nombre es: %0ANecesito ayuda con:",
+        paint: "Hola, estoy interesado en el servicio de Pintura. Mi nombre es: %0ANecesito ayuda con:",
+        offer: "Hola, veo la oferta de mantenimiento (10% + diagnóstico). Quiero más información."
+      },
+      en: {
+        general: "Hello, I'm interested in your services. Can you help me?",
+        ac: "Hello, I'm interested in the Air Conditioning service. My name is: %0AI need help with:",
+        elec: "Hello, I'm interested in the Electrical service. My name is: %0AI need help with:",
+        plom: "Hello, I'm interested in the Plumbing service. My name is: %0AI need help with:",
+        ref: "Hello, I'm interested in the Refrigeration service. My name is: %0AI need help with:",
+        paint: "Hello, I'm interested in the Painting service. My name is: %0AI need help with:",
+        offer: "Hello, I saw the maintenance offer (10% + diagnosis). I want more information."
+      }
+    };
+
+    const langKey = isSpanish ? "es" : "en";
+
+    // Helper to set href with encoded text
+    function waHref(text){ return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text); }
+
+    // Set all service button hrefs with prefilled messages
+    document.getElementById("acBtn").href = waHref(messages[langKey].ac);
+    document.getElementById("elecBtn").href = waHref(messages[langKey].elec);
+    document.getElementById("plomBtn").href = waHref(messages[langKey].plom);
+    document.getElementById("refBtn").href = waHref(messages[langKey].ref);
+    document.getElementById("paintBtn").href = waHref(messages[langKey].paint);
+    document.getElementById("offerBtn").href = waHref(messages[langKey].offer);
+    document.getElementById("promoWhats").href = waHref(messages[langKey].offer);
+    document.getElementById("ctaWhats").href = waHref(messages[langKey].general);
+    document.getElementById("whatsappFloat").href = waHref(messages[langKey].general);
+
+    /* POPUP */
+    const PROMO_KEY = "coldservices_popup_shown";
+    function showPromo(){
+      if(!sessionStorage.getItem(PROMO_KEY)){
+        document.getElementById("promoOverlay").style.display = "flex";
+        sessionStorage.setItem(PROMO_KEY, "1");
+      }
+    }
+    setTimeout(showPromo, 5000);
+    function closePromo(){document.getElementById("promoOverlay").style.display="none"}
+
+    /* FORM */
+    function submitForm(e){
+      e.preventDefault();
+      const name=document.getElementById("name").value.trim();
+      const email=document.getElementById("email").value.trim();
+      const msg=document.getElementById("message").value.trim();
+      const result=document.getElementById("formResult");
+
+      if(!name){
+        result.style.display="block";
+        result.innerText=isSpanish?"Completa los campos requeridos.":"Complete required fields.";
+        return;
+      }
+
+      // If message empty, use a sensible default per language
+      const userMessage = msg || (isSpanish ? "Hola, estoy interesado en sus servicios. Por favor contáctenme." : "Hello, I'm interested in your services. Please contact me.");
+
+      // Build the whatsapp text including name and optional email
+      let text = (isSpanish ? "Hola, soy " : "Hello, I am ") + name;
+      if(email) text += (isSpanish ? " - Email: " : " - Email: ") + email;
+      text += (isSpanish ? " - Necesito: " : " - I need: ") + userMessage;
+
+      // Open WhatsApp
+      window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
+
+      result.style.display="block";
+      result.innerText=t.formSuccess;
+      document.getElementById("leadForm").reset();
+    }
+
+    // Close popup on ESC
+    document.addEventListener("keydown", e=>{if(e.key==="Escape") closePromo()});
+  </script>
 
 </body>
 </html>
